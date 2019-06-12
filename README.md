@@ -21,9 +21,10 @@ require "poemist"
 ```
 
 ### Get random poems in JSON
-'''poems = Poemist::Client.new
-poems.get_random_poems
-'''
+
+```poems = Poemist::Client.new
+poems.to_text
+```
 
 ## Development
 
