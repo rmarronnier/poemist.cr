@@ -4,17 +4,16 @@ require "json"
 module Poemist
   class Client
     getter address : String?
+    getter poems
 
-    def initialize(address)
-    @address = address
-    end
-
-    def get_random_poems(address = "https://www.poemist.com/api/v1/randompoems")
+    def initialize(address = "https://www.poemist.com/api/v1/randompoems")
+      @address = address
       response = HTTP::Client.get address
-      obj = JSON.parse(response.body)
+      @poems = JSON.parse(response.body)
     end
-  
+
+    def to_text()
+      @poems[0]["content"].as_s
+    end
   end
-
-
 end
